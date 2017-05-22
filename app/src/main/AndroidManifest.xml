@@ -19,6 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AgendaActivity"
+            android:label="@string/title_activity_agenda"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ClienteActivity"
+            android:label="@string/title_activity_cliente"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
