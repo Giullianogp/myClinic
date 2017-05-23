@@ -1,5 +1,9 @@
 package com.myclinic.ggp.myclinic.Models;
 
+import android.graphics.Color;
+
+import com.myclinic.ggp.myclinic.Enums.SituacaoAgenda;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,14 +16,16 @@ public class Agenda implements Serializable {
 
     private Cliente cliente;
     private Procedimento procedimento;
+    private SituacaoAgenda situacao;
     private Date data;
     private String comentario;
 
-    public Agenda(Cliente cliente, Procedimento procedimento, Date data, String comentario) {
+    public Agenda(Cliente cliente, Procedimento procedimento, Date data, String comentario, SituacaoAgenda situacaoAgenda) {
         this.cliente = cliente;
         this.procedimento = procedimento;
         this.data = data;
         this.comentario = comentario;
+        this.situacao = situacaoAgenda;
     }
 
 
@@ -53,5 +59,23 @@ public class Agenda implements Serializable {
 
     public void setComentario(String comentario) {
         this.comentario = comentario;
+    }
+
+    public SituacaoAgenda getSituacao() {return situacao;}
+
+    public void setSituacao(SituacaoAgenda situacao) {
+        this.situacao = situacao;
+    }
+
+    public int getColor(){
+
+        if (this.situacao == SituacaoAgenda.Aberta){
+            return Color.parseColor("#80CBC4");
+        } else if (this.situacao == SituacaoAgenda.Finalizada) {
+            return Color.parseColor("#90CAF9");
+        }else{
+            return Color.parseColor("#EF9A9A");
+        }
+
     }
 }

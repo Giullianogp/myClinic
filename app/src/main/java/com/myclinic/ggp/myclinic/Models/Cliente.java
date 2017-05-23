@@ -17,15 +17,8 @@ public class Cliente implements Serializable {
     private String numero;
     private String complemento;
 
-    public Cliente(String nome, String telefone, String email, String logradouro, String cidade, String cep, String numero, String complemento) {
+    public Cliente(String nome) {
         this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.logradouro = logradouro;
-        this.cidade = cidade;
-        this.cep = cep;
-        this.numero = numero;
-        this.complemento = complemento;
     }
 
 

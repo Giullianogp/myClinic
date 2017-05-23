@@ -10,4 +10,12 @@
     tools:showIn="@layout/app_bar_main">
 
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true" />
+
+
 </RelativeLayout>
