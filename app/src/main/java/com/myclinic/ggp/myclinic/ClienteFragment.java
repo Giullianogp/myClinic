@@ -1,46 +1,46 @@
 package com.myclinic.ggp.myclinic;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ClienteFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ClienteFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.myclinic.ggp.myclinic.Adapters.AgendaItemAdapter;
+import com.myclinic.ggp.myclinic.Adapters.ClienteItemAdapter;
+import com.myclinic.ggp.myclinic.Enums.SituacaoAgenda;
+import com.myclinic.ggp.myclinic.Models.Agenda;
+import com.myclinic.ggp.myclinic.Models.Cliente;
+import com.myclinic.ggp.myclinic.Models.Procedimento;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 public class ClienteFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ClienteItemAdapter clienteItemAdapter;
+    private List<Cliente> listaCliente = new ArrayList<>();
+    int posicaoAlterar = -1;
+    private static final int REQ_DETALHE = 1;
 
     private OnFragmentInteractionListener mListener;
 
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+    private String mParam1;
+    private String mParam2;
+
     public ClienteFragment() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ClienteFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ClienteFragment newInstance(String param1, String param2) {
         ClienteFragment fragment = new ClienteFragment();
         Bundle args = new Bundle();
@@ -53,24 +53,48 @@ public class ClienteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cliente, container, false);
+        View v = inflater.inflate(R.layout.fragment_cliente, container, false);
+
+        Activity ac = getActivity();
+
+        CreateClientes();
+
+        clienteItemAdapter = new ClienteItemAdapter(listaCliente, ac);
+        ListView listView = (ListView) v.findViewById(R.id.list_item);
+        listView.setAdapter(clienteItemAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Cliente cliente = listaCliente.get(position);
+                posicaoAlterar = position;
+
+                Intent it = new Intent(getActivity(), ClienteDetalheActivity.class);
+                it.putExtra("cliente", cliente);
+                startActivityForResult(it, REQ_DETALHE);
+
+
+            }
+        });
+
+        return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    private void CreateClientes() {
+        listaCliente.add(new Cliente("Pedro"));
+        listaCliente.add(new Cliente("João"));
+        listaCliente.add(new Cliente("Maria"));
+        listaCliente.add(new Cliente("josé"));
+        listaCliente.add(new Cliente("Luiz"));
+        listaCliente.add(new Cliente("Claudio"));
+        listaCliente.add(new Cliente("Marcos"));
+        listaCliente.add(new Cliente("Bruna"));
     }
 
     @Override
@@ -90,18 +114,7 @@ public class ClienteFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+            void onFragmentInteraction(Uri uri);
     }
 }

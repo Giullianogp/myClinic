@@ -19,7 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AgendaItemTemplate"></activity>
+        <activity android:name=".AgendaItemTemplate" />
+        <activity
+            android:name=".AgendaDetalheActivity"
+            android:parentActivityName=".AgendaItemTemplate" />
+        <activity
+            android:name=".ClienteDetalheActivity"
+            android:parentActivityName=".ClienteItemTemplate" />
+        <activity android:name=".ClienteItemTemplate" />
     </application>
 
 </manifest>

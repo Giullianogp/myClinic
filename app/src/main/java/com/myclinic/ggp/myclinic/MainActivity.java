@@ -16,6 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import es.dmoral.toasty.Toasty;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -87,9 +90,9 @@ public class MainActivity extends AppCompatActivity
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.for_fragment, clienteFragment).commit();
         } else if (id == R.id.nav_procedimento) {
-
+            Toasty.warning(this, "Activity não implementada.", Toast.LENGTH_SHORT, true).show();
         } else if (id == R.id.nav_config) {
-
+            Toasty.warning(this, "Activity não implementada.", Toast.LENGTH_SHORT, true).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

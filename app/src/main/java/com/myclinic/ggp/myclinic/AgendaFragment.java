@@ -1,13 +1,18 @@
 package com.myclinic.ggp.myclinic;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.myclinic.ggp.myclinic.Adapters.AgendaItemAdapter;
@@ -27,6 +32,10 @@ public class AgendaFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private static final int REQ_DETALHE=1;
+
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -37,15 +46,9 @@ public class AgendaFragment extends Fragment {
 
     private AgendaItemAdapter agendaItemAdapter;
     private List<Agenda> listaAgenda = new ArrayList<>();
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AgendaFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+    int posicaoAlterar=-1;
+
+
     public static AgendaFragment newInstance(String param1, String param2) {
         AgendaFragment fragment = new AgendaFragment();
         Bundle args = new Bundle();
@@ -82,14 +85,22 @@ public class AgendaFragment extends Fragment {
         ListView listView = (ListView)  v.findViewById(R.id.list_item);
         listView.setAdapter(agendaItemAdapter);
 
-        return v;
-    }
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Agenda agenda = listaAgenda.get(position);
+                        posicaoAlterar = position;
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+                        Intent it = new Intent( getActivity() , AgendaDetalheActivity.class);
+                        it.putExtra("agenda",agenda);
+                        startActivityForResult(it,REQ_DETALHE);
+
+
+
+                    }
+                });
+
+        return v;
     }
 
     @Override
@@ -120,7 +131,6 @@ public class AgendaFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+            void onFragmentInteraction(Uri uri);
     }
 }
