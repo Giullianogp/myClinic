@@ -13,14 +13,15 @@ import java.util.Date;
 
 public class Agenda implements Serializable {
 
-
+    private int id;
     private Cliente cliente;
     private Procedimento procedimento;
     private SituacaoAgenda situacao;
     private Date data;
     private String comentario;
 
-    public Agenda(Cliente cliente, Procedimento procedimento, Date data, String comentario, SituacaoAgenda situacaoAgenda) {
+    public Agenda(int id, Cliente cliente, Procedimento procedimento, Date data, String comentario, SituacaoAgenda situacaoAgenda) {
+        this.id = id;
         this.cliente = cliente;
         this.procedimento = procedimento;
         this.data = data;
