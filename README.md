@@ -35,6 +35,7 @@ Pelo menos três telas funcionando e com navegação adequada;
 Erros de funcionamento serão tolerados, mas a aplicação deve funcionar seu fluxo principal;
 Código da aplicação publicado no Git;
 Apresentação razoável e seguindo a estrutura solicitada.
+
 Conceito B:
 
 Realização das duas funcionalidades solicitadas com persistência de dados;
@@ -44,6 +45,7 @@ Alguma preocupação com validação de entrada e de negócio;
 Erros, só em casos excepcionais;
 Código da aplicação publicado no Git;
 Apresentação adequada e seguindo a estrutura solicitada.
+
 Conceito A:
 
 Realização das duas funcionalidades solicitadas com persistência de dados;
@@ -55,7 +57,6 @@ Erros, só em casos excepcionais;
 Utilização de um sistema de controle de versão (ex: git) aplicando alguns commits adequados;
 Apresentação bem adequada e seguindo a estrutura solicitada.
  
-
 Apresentação e Entrega:
 
 O trabalho deverá ser realizado individualmente . Os alunos deverão estar presentes em aula para apresentar o trabalho. A entrega deverá ser realizada pelo Moodle (http://www.profries.com.br/moodle), anexando o projeto como arquivo zipado (sem bibliotecas), a apresentação (em PDF) e o link do Github.
