@@ -1,12 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.myclinic.ggp.myclinic.ClienteDetalheActivity">
 
 
+    <EditText
+        android:id="@+id/textNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:maxLength="30" />
+
+    <EditText
+        android:id="@+id/textCidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Cidade"
+        android:inputType="textPersonName"
+        android:maxLength="30" />
+
+    <EditText
+        android:id="@+id/textLogradouro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Logradouro"
+        android:inputType="textPersonName"
+        android:maxLength="30" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/textNumero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Numero"
+            android:inputType="textPersonName"
+            android:maxLength="30" />
+
+        <EditText
+            android:id="@+id/textComplemento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Complemento"
+            android:inputType="textPersonName"
+            android:maxLength="30" />
 
 
-</android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <EditText
+            android:id="@+id/textTelefone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Telefone"
+            android:inputType="textPhonetic"
+            android:maxLength="30"
+            android:layout_weight="0.45" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/background_light"
+            android:tint="@color/colorPrimary"
+            app:srcCompat="@drawable/ic_phone_black_24px" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/colorPrimary"
+        android:text="Salvar"
+        android:textAlignment="center"
+        android:textColor="@android:color/white" />
+
+
+</LinearLayout>

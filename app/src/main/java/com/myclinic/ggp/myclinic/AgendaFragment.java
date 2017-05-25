@@ -76,10 +76,10 @@ public class AgendaFragment extends Fragment {
 
         Activity ac = getActivity();
 
-        listaAgenda.add(new Agenda(new Cliente("Pedro"),new Procedimento("", 20), new Date() ,"Agendamento", SituacaoAgenda.Finalizada));
-        listaAgenda.add(new Agenda(new Cliente("João"),new Procedimento("asd", 20), new Date() ,"Agendamento",SituacaoAgenda.Aberta));
-        listaAgenda.add(new Agenda(new Cliente("Maria"),new Procedimento("asdas", 20), new Date() ,"Agendamento",SituacaoAgenda.Cancelada));
-        listaAgenda.add(new Agenda(new Cliente("José"),new Procedimento("asdasd", 20), new Date() ,"Agendamento",SituacaoAgenda.Aberta));
+        listaAgenda.add(new Agenda(1,new Cliente(1,"Pedro"),new Procedimento("", 20), new Date() ,"Agendamento", SituacaoAgenda.Finalizada));
+        listaAgenda.add(new Agenda(2,new Cliente(2,"João"),new Procedimento( "asd", 20), new Date() ,"Agendamento",SituacaoAgenda.Aberta));
+        listaAgenda.add(new Agenda(3,new Cliente(3,"Maria"),new Procedimento("asdas", 20), new Date() ,"Agendamento",SituacaoAgenda.Cancelada));
+        listaAgenda.add(new Agenda(4,new Cliente(4,"José"),new Procedimento("asdasd", 20), new Date() ,"Agendamento",SituacaoAgenda.Aberta));
 
         agendaItemAdapter = new AgendaItemAdapter(listaAgenda, ac);
         ListView listView = (ListView)  v.findViewById(R.id.list_item);

@@ -87,14 +87,14 @@ public class ClienteFragment extends Fragment {
     }
 
     private void CreateClientes() {
-        listaCliente.add(new Cliente("Pedro"));
-        listaCliente.add(new Cliente("João"));
-        listaCliente.add(new Cliente("Maria"));
-        listaCliente.add(new Cliente("josé"));
-        listaCliente.add(new Cliente("Luiz"));
-        listaCliente.add(new Cliente("Claudio"));
-        listaCliente.add(new Cliente("Marcos"));
-        listaCliente.add(new Cliente("Bruna"));
+        listaCliente.add(new Cliente(1,"Pedro"));
+        listaCliente.add(new Cliente(2,"João"));
+        listaCliente.add(new Cliente(3,"Maria"));
+        listaCliente.add(new Cliente(4,"josé"));
+        listaCliente.add(new Cliente(5,"Luiz"));
+        listaCliente.add(new Cliente(6,"Claudio"));
+        listaCliente.add(new Cliente(7,"Marcos"));
+        listaCliente.add(new Cliente(8,"Bruna"));
     }
 
     @Override
