@@ -21,6 +21,9 @@ public class ClienteItemAdapter extends BaseAdapter {
         this.context = contexto;
     }
 
+    public void setListaClientes(List<Cliente> listaCliente) {
+        this.clientes = listaCliente;
+    }
 
     @Override
     public int getCount() {

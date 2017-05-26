@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.myclinic.ggp.myclinic.Adapters.AgendaItemAdapter;
 import com.myclinic.ggp.myclinic.Adapters.ClienteItemAdapter;
+import com.myclinic.ggp.myclinic.Database.ClienteDb;
 import com.myclinic.ggp.myclinic.Enums.SituacaoAgenda;
 import com.myclinic.ggp.myclinic.Models.Agenda;
 import com.myclinic.ggp.myclinic.Models.Cliente;
@@ -63,7 +64,7 @@ public class ClienteFragment extends Fragment {
 
         Activity ac = getActivity();
 
-        CreateClientes();
+        //CreateClientes();
 
         clienteItemAdapter = new ClienteItemAdapter(listaCliente, ac);
         ListView listView = (ListView) v.findViewById(R.id.list_item);
@@ -87,14 +88,28 @@ public class ClienteFragment extends Fragment {
     }
 
     private void CreateClientes() {
-        listaCliente.add(new Cliente(1,"Pedro"));
-        listaCliente.add(new Cliente(2,"João"));
-        listaCliente.add(new Cliente(3,"Maria"));
-        listaCliente.add(new Cliente(4,"josé"));
-        listaCliente.add(new Cliente(5,"Luiz"));
-        listaCliente.add(new Cliente(6,"Claudio"));
-        listaCliente.add(new Cliente(7,"Marcos"));
-        listaCliente.add(new Cliente(8,"Bruna"));
+        listaCliente.add(new Cliente(1, "Pedro"));
+        listaCliente.add(new Cliente(2, "João"));
+        listaCliente.add(new Cliente(3, "Maria"));
+        listaCliente.add(new Cliente(4, "josé"));
+        listaCliente.add(new Cliente(5, "Luiz"));
+        listaCliente.add(new Cliente(6, "Claudio"));
+        listaCliente.add(new Cliente(7, "Marcos"));
+        listaCliente.add(new Cliente(8, "Bruna"));
+    }
+
+    public void onNew(View v){
+        Intent it = new Intent(getActivity(), ClienteDetalheActivity.class);
+        startActivityForResult(it, REQ_DETALHE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ClienteDb db = new ClienteDb(getActivity());
+        listaCliente = db.Listar();
+        clienteItemAdapter.setListaClientes(listaCliente);
+        clienteItemAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -115,6 +130,6 @@ public class ClienteFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-            void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(Uri uri);
     }
 }
