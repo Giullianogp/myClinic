@@ -81,14 +81,14 @@ public class ClienteDb implements ClienteContract {
 
         while (cursor.moveToNext()) {
             int id = cursor.getInt(cursor.getColumnIndex("id"));
-            String nome = cursor.getString(cursor.getColumnIndex("Nome"));
-            String telefone = cursor.getString(cursor.getColumnIndex("Telefone"));
-            String email = cursor.getString(cursor.getColumnIndex("Email"));
-            String cidade = cursor.getString(cursor.getColumnIndex("Cidade"));
-            String logradouro = cursor.getString(cursor.getColumnIndex("Logradouro"));
-            String numero = cursor.getString(cursor.getColumnIndex("Numero"));
-            String complemento = cursor.getString(cursor.getColumnIndex("Complemento"));
-            String cep = cursor.getString(cursor.getColumnIndex("Cep"));
+            String nome = cursor.getString(cursor.getColumnIndex("nome"));
+            String telefone = cursor.getString(cursor.getColumnIndex("telefone"));
+            String email = cursor.getString(cursor.getColumnIndex("email"));
+            String cidade = cursor.getString(cursor.getColumnIndex("cidade"));
+            String logradouro = cursor.getString(cursor.getColumnIndex("logradouro"));
+            String numero = cursor.getString(cursor.getColumnIndex("numero"));
+            String complemento = cursor.getString(cursor.getColumnIndex("complemento"));
+            String cep = cursor.getString(cursor.getColumnIndex("cep"));
 
             Cliente contato = new Cliente(id, nome, telefone, email, logradouro, cidade, cep, numero, complemento);
             listaContatos.add(contato);
@@ -107,14 +107,14 @@ public class ClienteDb implements ClienteContract {
 
         if (cursor.moveToNext()) {
             int idX = cursor.getInt(cursor.getColumnIndex("id"));
-            String nome = cursor.getString(cursor.getColumnIndex("Nome"));
-            String telefone = cursor.getString(cursor.getColumnIndex("Telefone"));
-            String email = cursor.getString(cursor.getColumnIndex("Email"));
-            String cidade = cursor.getString(cursor.getColumnIndex("Cidade"));
-            String logradouro = cursor.getString(cursor.getColumnIndex("Logradouro"));
-            String numero = cursor.getString(cursor.getColumnIndex("Numero"));
-            String complemento = cursor.getString(cursor.getColumnIndex("Complemento"));
-            String cep = cursor.getString(cursor.getColumnIndex("Cep"));
+            String nome = cursor.getString(cursor.getColumnIndex("nome"));
+            String telefone = cursor.getString(cursor.getColumnIndex("telefone"));
+            String email = cursor.getString(cursor.getColumnIndex("email"));
+            String cidade = cursor.getString(cursor.getColumnIndex("cidade"));
+            String logradouro = cursor.getString(cursor.getColumnIndex("logradouro"));
+            String numero = cursor.getString(cursor.getColumnIndex("numero"));
+            String complemento = cursor.getString(cursor.getColumnIndex("complemento"));
+            String cep = cursor.getString(cursor.getColumnIndex("cep"));
             Cliente contato = new Cliente(idX, nome, telefone, email, logradouro, cidade, cep, numero, complemento);
             return contato;
         }

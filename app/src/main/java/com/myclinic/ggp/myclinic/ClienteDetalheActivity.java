@@ -27,9 +27,18 @@ public class ClienteDetalheActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cliente_detalhe);
 
         Intent it = getIntent();
-        if (it != null)
-        {
+        if (it != null) {
             this._cliente = (Cliente) it.getSerializableExtra("cliente");
+            if (_cliente != null) {
+                ((TextView) findViewById(R.id.textNome)).setText(_cliente.getNome());
+                ((TextView) findViewById(R.id.textEmail)).setText(_cliente.getEmail());
+                ((TextView) findViewById(R.id.textTelefone)).setText(_cliente.getTelefone());
+                ((TextView) findViewById(R.id.textCidade)).setText(_cliente.getCidade());
+                ((TextView) findViewById(R.id.textLogradouro)).setText(_cliente.getLogradouro());
+                ((TextView) findViewById(R.id.textCep)).setText(_cliente.getCep());
+                ((TextView) findViewById(R.id.textNumero)).setText(_cliente.getNumero());
+                ((TextView) findViewById(R.id.textComplemento)).setText(_cliente.getComplemento());
+            }
         }
     }
 
@@ -37,7 +46,7 @@ public class ClienteDetalheActivity extends AppCompatActivity {
 
         String phone = ((TextView) findViewById(R.id.textTelefone)).getText().toString();
 
-        if (phone == "") {
+        if (phone.length() == 0) {
             Toasty.warning(this, "Não foi informado o telefone.", Toast.LENGTH_SHORT, true).show();
 
         } else {
@@ -53,24 +62,21 @@ public class ClienteDetalheActivity extends AppCompatActivity {
 
     public void OnSave(View v) {
 
-        String nome = ((TextView)findViewById(R.id.textNome)).getText().toString();
-        String email = ((TextView)findViewById(R.id.text)).getText().toString();
-        String telefone = ((TextView)findViewById(R.id.textTelefone)).getText().toString();
-        String cidade = ((TextView)findViewById(R.id.textCidade)).getText().toString();
-        String logradouro = ((TextView)findViewById(R.id.textLogradouro)).getText().toString();
-        String cep = ((TextView)findViewById(R.id.textCep)).getText().toString();
-        String numero = ((TextView)findViewById(R.id.textNumero)).getText().toString();
-        String complemento = ((TextView)findViewById(R.id.textComplemento)).getText().toString();
+        String nome = ((TextView) findViewById(R.id.textNome)).getText().toString();
+        String email = ((TextView) findViewById(R.id.textEmail)).getText().toString();
+        String telefone = ((TextView) findViewById(R.id.textTelefone)).getText().toString();
+        String cidade = ((TextView) findViewById(R.id.textCidade)).getText().toString();
+        String logradouro = ((TextView) findViewById(R.id.textLogradouro)).getText().toString();
+        String cep = ((TextView) findViewById(R.id.textCep)).getText().toString();
+        String numero = ((TextView) findViewById(R.id.textNumero)).getText().toString();
+        String complemento = ((TextView) findViewById(R.id.textComplemento)).getText().toString();
 
         ClienteDb cli = new ClienteDb(this);
 
-        if (_cliente == null)
-        {
-            _cliente = new Cliente(nome,telefone,email,logradouro,cidade,cep,numero,complemento);
+        if (_cliente == null) {
+            _cliente = new Cliente(nome, telefone, email, logradouro, cidade, cep, numero, complemento);
             cli.Inserir(_cliente);
-        }
-        else
-        {
+        } else {
             _cliente.setNome(nome);
             _cliente.setTelefone(telefone);
             _cliente.setEmail(email);

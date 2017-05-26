@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical"
     tools:context="com.myclinic.ggp.myclinic.ClienteItemTemplate">
 
 
@@ -11,7 +16,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textTelefone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:layout_marginLeft="10dp" />
 
 
 </LinearLayout>

@@ -96,9 +96,11 @@
             android:maxLength="20" />
 
         <ImageButton
+            android:id="@+id/btLigar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@android:color/background_light"
+            android:onClick="OnCall"
             android:tint="@color/colorPrimary"
             app:srcCompat="@drawable/ic_phone_black_24px" />
 
@@ -113,6 +115,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:background="@android:color/holo_green_dark"
+        android:onClick="OnSave"
         android:text="Salvar"
         android:textAlignment="center"
         android:textColor="@android:color/white" />

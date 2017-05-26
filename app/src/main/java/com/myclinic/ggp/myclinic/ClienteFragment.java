@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.myclinic.ggp.myclinic.Adapters.AgendaItemAdapter;
@@ -59,17 +60,23 @@ public class ClienteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cliente, container, false);
 
         Activity ac = getActivity();
 
-        //CreateClientes();
+        Button button = (Button) v.findViewById(R.id.btAdicionar);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(getActivity(), ClienteDetalheActivity.class);
+                startActivityForResult(it, REQ_DETALHE);
+            }
+        });
+
 
         clienteItemAdapter = new ClienteItemAdapter(listaCliente, ac);
         ListView listView = (ListView) v.findViewById(R.id.list_item);
         listView.setAdapter(clienteItemAdapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -96,11 +103,6 @@ public class ClienteFragment extends Fragment {
         listaCliente.add(new Cliente(6, "Claudio"));
         listaCliente.add(new Cliente(7, "Marcos"));
         listaCliente.add(new Cliente(8, "Bruna"));
-    }
-
-    public void onNew(View v){
-        Intent it = new Intent(getActivity(), ClienteDetalheActivity.class);
-        startActivityForResult(it, REQ_DETALHE);
     }
 
     @Override
