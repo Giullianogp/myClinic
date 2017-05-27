@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
+
 
 public class AgendaFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -94,9 +96,6 @@ public class AgendaFragment extends Fragment {
                         Intent it = new Intent( getActivity() , AgendaDetalheActivity.class);
                         it.putExtra("agenda",agenda);
                         startActivityForResult(it,REQ_DETALHE);
-
-
-
                     }
                 });
 
@@ -112,6 +111,20 @@ public class AgendaFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == REQ_DETALHE)
+        {
+            if (resultCode == RESULT_OK)
+            {
+                Agenda agenda = (Agenda) data.getSerializableExtra("agenda");
+                listaAgenda.get(posicaoAlterar).setSituacao(agenda.getSituacao());
+                agendaItemAdapter.notifyDataSetChanged();
+            }
+        }
+
     }
 
     @Override

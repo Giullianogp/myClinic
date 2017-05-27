@@ -53,7 +53,7 @@ public class AgendaItemAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.activity_agenda_item_template, null);
         ((TextView) view.findViewById(R.id.textPaciente)).setText(agenda.getCliente().getNome());
-        ((TextView) view.findViewById(R.id.textProc)).setText(agenda.getProcedimento().getNome());
+        ((TextView) view.findViewById(R.id.textProc)).setText(agenda.getSituacaoDescricao());
         view.findViewById(R.id.linear_agenda).setBackgroundColor(agenda.getColor());
 
         return view;

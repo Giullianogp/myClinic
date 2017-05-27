@@ -68,14 +68,24 @@ public class Agenda implements Serializable {
         this.situacao = situacao;
     }
 
+    public String getSituacaoDescricao() {
+        if (this.situacao == SituacaoAgenda.Aberta){
+            return "Aberta";
+        } else if (this.situacao == SituacaoAgenda.Finalizada) {
+            return "Finalizada";
+        }else{
+            return "Cancelada";
+        }
+    }
+
     public int getColor(){
 
         if (this.situacao == SituacaoAgenda.Aberta){
-            return Color.parseColor("#80CBC4");
+            return Color.parseColor("#3F51B5");
         } else if (this.situacao == SituacaoAgenda.Finalizada) {
-            return Color.parseColor("#90CAF9");
+            return Color.parseColor("#66BB6A");
         }else{
-            return Color.parseColor("#EF9A9A");
+            return Color.parseColor("#EF5350");
         }
 
     }
