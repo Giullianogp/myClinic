@@ -23,7 +23,7 @@ public class MyClinicTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
         ClienteDb db = new ClienteDb(appContext);
         int quantidadeOld = db.Listar().size();
-        db.Inserir(new Cliente("Joao","545321534","","","","","",""));
+        db.Inserir(new Cliente("Joao","54532153","","","","","",""));
         int quantidadeNew  = db.Listar().size();
         assertEquals(quantidadeOld + 1,quantidadeNew);
     }
