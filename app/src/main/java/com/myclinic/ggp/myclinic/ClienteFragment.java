@@ -2,16 +2,19 @@ package com.myclinic.ggp.myclinic;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.myclinic.ggp.myclinic.Adapters.AgendaItemAdapter;
 import com.myclinic.ggp.myclinic.Adapters.ClienteItemAdapter;
@@ -24,6 +27,8 @@ import com.myclinic.ggp.myclinic.Models.Procedimento;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import es.dmoral.toasty.Toasty;
 
 public class ClienteFragment extends Fragment {
 
@@ -86,24 +91,37 @@ public class ClienteFragment extends Fragment {
                 Intent it = new Intent(getActivity(), ClienteDetalheActivity.class);
                 it.putExtra("cliente", cliente);
                 startActivityForResult(it, REQ_DETALHE);
+            }
+        });
 
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder
+                        .setTitle("Remover Cliente")
+                        .setMessage("Deseja remover o cliente?")
+                        .setIcon(R.drawable.ic_delete_black_24px)
+                        .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Cliente cliente = listaCliente.get(position);
+                                ClienteDb db = new ClienteDb(getActivity());
+                                db.Excluir(cliente);
+                                listaCliente.remove(position);
+                                ClienteFragment.this.clienteItemAdapter.notifyDataSetChanged();
+                                Toasty.success(getActivity(), "Cliente Removido.", Toast.LENGTH_SHORT, true).show();
+                            }
+                        })
+                        .setNegativeButton("Não", null)
+                        .show();
+                return true;
             }
         });
 
         return v;
     }
 
-    private void CreateClientes() {
-        listaCliente.add(new Cliente(1, "Pedro"));
-        listaCliente.add(new Cliente(2, "João"));
-        listaCliente.add(new Cliente(3, "Maria"));
-        listaCliente.add(new Cliente(4, "josé"));
-        listaCliente.add(new Cliente(5, "Luiz"));
-        listaCliente.add(new Cliente(6, "Claudio"));
-        listaCliente.add(new Cliente(7, "Marcos"));
-        listaCliente.add(new Cliente(8, "Bruna"));
-    }
 
     @Override
     public void onResume() {

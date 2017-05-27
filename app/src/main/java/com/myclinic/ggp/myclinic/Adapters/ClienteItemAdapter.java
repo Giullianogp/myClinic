@@ -48,7 +48,7 @@ public class ClienteItemAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.activity_cliente_item_template, null);
         ((TextView) view.findViewById(R.id.textPaciente)).setText(cliente.getNome());
-        ((TextView) view.findViewById(R.id.textTelefone)).setText(cliente.getTelefone());
+        //((TextView) view.findViewById(R.id.textTelefone)).setText(cliente.getTelefone());
         return view;
 
     }
