@@ -31,7 +31,7 @@ public class AgendaDetalheActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.textTelefone)).setText("Telefone: "+ _agenda.getCliente().getTelefone());
         ((TextView)findViewById(R.id.textTelefone)).setText("Horário: 25/05/2017 10:00");
         ((TextView)findViewById(R.id.textTelefone)).setText("Procedimento: Teste");
-        ((LinearLayout)findViewById(R.id.linear)).setBackgroundColor(_agenda.getColor());
+        //((LinearLayout)findViewById(R.id.linear)).setBackgroundColor(_agenda.getColor());
 
         if (_agenda.getSituacao() == SituacaoAgenda.Finalizada){
 
